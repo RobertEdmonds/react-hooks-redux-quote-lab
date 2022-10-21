@@ -1,7 +1,12 @@
 import React from "react";
+// import store from "../../store";
 import QuoteCard from "./QuoteCard";
+import {useSelector} from "react-redux";
+
 
 function Quotes() {
+  const quotes = useSelector(store => store.quotes)
+
   return (
     <div>
       <hr />
@@ -12,6 +17,7 @@ function Quotes() {
       <div className="container">
         <div className="row">
           <div className="col-md-4">
+            {quotes.map(quote => <QuoteCard key={quote.id} quote={quote} name={quote.author} content={quote.content} votes={quote.votes}/>)}
             {/*
               TODO:
 
